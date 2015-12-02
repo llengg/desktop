@@ -1,17 +1,17 @@
-FROM ubuntu:14.04
-MAINTAINER gal "keepob@163.com"
+FROM debian:wheezy
+MAINTAINER gaoal "keepob@163.com"
 
-RUN echo "deb http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse" > /etc/apt/sources.list
-RUN echo "deb http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list
+ADD sources.list /etc/apt/sources.list
+ADD run.sh /run.sh
 
-RUN apt-get update
-RUN apt-get install -y openssh-server
-RUN mkdir /var/run/sshd
+RUN apt-get update && \
+    apt-get -yq install x-window-system-core gnome-desktop-environment vnc4server curl && \
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /var/run/sshd && \
+    chmod 755 /run.sh && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-RUN echo "root:123456" | chpasswd
+ENV ROOT_PASS=123456
 
-EXPOSE 22 1723
-CMD ["/usr/sbin/sshd", "-D"]  
+EXPOSE 22 5901
+CMD ["/run.sh"]

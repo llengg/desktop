@@ -6,15 +6,15 @@ ADD vncserver /etc/init.d/vncserver
 ADD run.sh /run.sh
 
 RUN apt-get update && \
-    apt-get -yq install x-window-system-core gnome-desktop-environment vnc4server curl && \
-    mkdir -p /var/run/sshd && \
-	cd /root
-    curl -O https://github.com/getlantern/lantern-binaries/raw/master/lantern-installer-64-bit.deb && \
-	dpkg -i lantern-installer-64-bit.deb && \
-	apt-get install libappindicator3-1 -y && \
-	chmod +x /etc/init.d/vncserver && \
-	chmod 755 /run.sh && \
-	rm -rf /var/lib/apt/lists/* && \
+    apt-get -yq install openssh-server openbox thunar tint2 vnc4server curl vim screen && \
+    mkdir -p /var/run/sshd;cd /root && \
+    curl -O http://nchc.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_27.0.1-0ubuntu1_amd64.deb && \
+    curl -O https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb ; apt-get install libappindicator3-1 && \
+    dpkg -i *.deb && \
+    chmod +x /etc/init.d/vncserver && \
+    chmod 755 /run.sh && \
+    apt-get install flashplugin-nonfree -y && \
+    rm -rf /var/lib/apt/lists/* && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 ENV ROOT_PASS=123456

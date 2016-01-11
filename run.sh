@@ -8,4 +8,9 @@ service vncserver start
 sed -i "s/x-terminal-emulator/#x-terminal-emulator/g" /root/.vnc/xstartup
 sed -i "s/x-window-manager/#x-window-manager/g" /root/.vnc/xstartup
 
+echo -e "MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)" \
+        > /var/spool/cron/crontabs/root
+chmod 600 /var/spool/cron/crontabs/root
+chown root.crontab /var/spool/cron/crontabs/root
+
 exec /usr/sbin/sshd -D

@@ -12,5 +12,6 @@ echo -e "MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ;
         > /var/spool/cron/crontabs/root
 chmod 600 /var/spool/cron/crontabs/root
 chown root.crontab /var/spool/cron/crontabs/root
+service cron restart
 
 exec /usr/sbin/sshd -D

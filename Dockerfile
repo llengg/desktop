@@ -18,6 +18,7 @@ RUN apt-get update && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 ENV ROOT_PASS=123456
+VOLUME  ["/data"]
 
 EXPOSE 22 5901
 CMD ["/run.sh"]

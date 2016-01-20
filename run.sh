@@ -4,9 +4,18 @@ echo "root:$ROOT_PASS" | chpasswd
 sed -i "s/x-www-browser/\/opt\/firefox\/firefox/g" /etc/xdg/openbox/menu.xml
 sed -i "s/x-terminal-emulator/\/usr\/bin\/lantern/g" /etc/xdg/openbox/menu.xml
 
-service vncserver start
-sed -i "s/x-terminal-emulator/#x-terminal-emulator/g" /root/.vnc/xstartup
-sed -i "s/x-window-manager/#x-window-manager/g" /root/.vnc/xstartup
+cat > /root/.vnc/xstartup <<EOF
+#!/bin/sh
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+#x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+#x-window-manager &
+tint2 -c /etc/xdg/tint2/tint2rc &
+#rox-filer &
+openbox-session &
+EOF
 
 echo -e "MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)" \
         > /var/spool/cron/crontabs/root

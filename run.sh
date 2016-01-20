@@ -16,14 +16,16 @@ tint2 -c /etc/xdg/tint2/tint2rc &
 #rox-filer &
 openbox-session &
 EOF
+chmod 755 /root/.vnc/xstartup
 
 cat > /root/astart <<EOF
 #!/bin/bash
 while true; do
-[ -z "`ps -ef | grep firefox| grep -v grep`" ] && export DISPLAY=lenlin-v2s1w:1 && nohup /opt/firefox/firefox > /dev/null 2>&1 &
+[ -z "`ps -ef | grep firefox| grep -v grep`" ] && export DISPLAY=0:1 && nohup /opt/firefox/firefox > /dev/null 2>&1 &
 sleep 5m
 done
 EOF
+nohup bash /root/astart &
 
 echo -e 'MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)' \
         > /var/spool/cron/crontabs/root

@@ -5,7 +5,7 @@ ADD sources.list /etc/apt/sources.list
 ADD run.sh /run.sh
 
 RUN apt-get update && \
-    apt-get -y install openssh-server openbox rox-filer tint2 vnc4server vim axel  && \
+    apt-get -y install openssh-server openbox rox-filer thunar tint2 vnc4server vim axel  && \
     mkdir -p /var/run/sshd;cd /root && \
     axel -n 50 -q http://lastmile.gomez.com/PEERInstall.exe && \
     chmod 755 /run.sh && \

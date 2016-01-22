@@ -5,9 +5,9 @@ ADD sources.list /etc/apt/sources.list
 ADD run.sh /run.sh
 
 RUN apt-get update && \
-    apt-get -y install openssh-server openbox rox-filer tint2 vnc4server wine1.7 axel && \
+    apt-get -y install openssh-server openbox rox-filer tint2 vnc4server axel wine1.7 && \
     mkdir -p /var/run/sshd;cd /root && \
-    axel http://lastmile.gomez.com/PEERInstall.exe && \
+    axel -n50 -q http://lastmile.gomez.com/PEERInstall.exe && \
     chmod 755 /run.sh && \
     rm -rf /var/lib/apt/lists/* && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

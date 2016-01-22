@@ -17,6 +17,6 @@ sed -i "s/x-www-browser/winecfg/g" /etc/xdg/openbox/menu.xml
 #rox-filer &
 #openbox-session &
 #EOF
-chmod 755 /root/.vnc/xstartup
+#chmod 755 /root/.vnc/xstartup
 
 exec /usr/sbin/sshd -D

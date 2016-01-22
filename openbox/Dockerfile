@@ -10,7 +10,7 @@ RUN apt-get update && \
     axel -n 50 -q http://lastmile.gomez.com/PEERInstall.exe && \
     chmod 755 /run.sh && \
     apt-get -y install python-software-properties && add-apt-repository ppa:ubuntu-wine/ppa && \
-    apt-get update && apt-get -y wine1.7 && \
+    apt-get update && apt-get -y install wine1.7 && \
     rm -rf /var/lib/apt/lists/* && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 

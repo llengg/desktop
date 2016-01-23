@@ -25,7 +25,7 @@ while true; do
 sleep 5m
 done
 EOF
-nohup bash /root/astart &
+#nohup bash /root/astart &
 
 echo -e 'MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)' \
         > /var/spool/cron/crontabs/root

@@ -6,11 +6,12 @@ ADD vncserver /etc/init.d/vncserver
 ADD run.sh /run.sh
 
 RUN apt-get update && \
-    apt-get -y install openssh-server openbox thunar tint2 vnc4server vim screen cron axel && \
+    apt-get -y install openssh-server openbox thunar tint2 vnc4server vim screen cron curl && \
     mkdir -p /var/run/sshd;cd /root && \
-    axel http://fh1331eh.bget.ru/files/firefox.deb && \
-    axel http://fh1331eh.bget.ru/files/lantern.deb ; apt-get -y install libappindicator3-1 && \
-    dpkg -i firefox.deb lantern.deb && \
+    curl -O http://nchc.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_27.0.1-0ubuntu1_amd64.deb && \
+    curl -O https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb && \
+    apt-get -y install libappindicator3-1 && \
+    dpkg -i *.deb && \
     chmod +x /etc/init.d/vncserver && \
     chmod 755 /run.sh && \
     apt-get install flashplugin-nonfree -y && \

@@ -11,7 +11,7 @@ RUN apt-get update && \
     curl -O https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb && \
     apt-get -y install libappindicator3-1 && dpkg -i *.deb && \
     apt-get -y install flashplugin-nonfree && \
-    apt-get -y install python-software-properties && add-apt-repository ppa:ubuntu-wine/ppa && \
+    apt-get -y install software-properties-common && add-apt-repository ppa:ubuntu-wine/ppa && \
     apt-get update && apt-get -y install wine1.7 && \
     axel -n 50 -q http://lastmile.gomez.com/PEERInstall.exe && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \

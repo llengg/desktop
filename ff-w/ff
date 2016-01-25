@@ -1,5 +1,0 @@
-#!/bin/bash
-while true; do
-[ -z "`ps -ef | grep firefox| grep -v grep`" ] && export DISPLAY=0:1 && nohup /opt/firefox/firefox > /dev/null 2>&1 &
-sleep 5m
-done

@@ -17,7 +17,7 @@ RUN apt-get update && \
     apt-get update && apt-get -y install wine1.7 && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     rm -rf /var/lib/apt/lists/*
-    
+ADD ff /root/ff    
 
 ENV ROOT_PASS=123456
 VOLUME  ["/data"]

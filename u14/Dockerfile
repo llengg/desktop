@@ -10,6 +10,7 @@ RUN apt-get update && \
     curl -O http://nchc.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_27.0.1-0ubuntu1_amd64.deb && \
     curl -O https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb && \
     apt-get -y install libappindicator3-1 && dpkg -i *.deb && \
+    apt-get install flashplugin-nonfree -y && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     chmod 755 /run.sh && \
     rm -rf /var/lib/apt/lists/*

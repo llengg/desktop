@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:14.10
 MAINTAINER gaoal "keepob@163.com"
 
 ADD sources.list /etc/apt/sources.list

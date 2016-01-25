@@ -8,9 +8,6 @@ RUN apt-get update && \
     apt-get -y install python-software-properties && add-apt-repository ppa:ubuntu-wine/ppa && \
     apt-get update && apt-get -y install wine1.7 && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    rm -rf /var/lib/apt/lists/*
-    
-RUN apt-get update && \
     apt-get -y install openssh-server openbox thunar tint2 vnc4server vim axel screen curl && \
     mkdir -p /var/run/sshd;cd /root && \
     curl -O http://nchc.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_27.0.1-0ubuntu1_amd64.deb && \
@@ -20,6 +17,7 @@ RUN apt-get update && \
     axel -n 50 -q http://lastmile.gomez.com/PEERInstall.exe && \
     chmod 755 /run.sh && \
     rm -rf /var/lib/apt/lists/*
+ADD ff /root/ff
 
 ENV ROOT_PASS=123456
 VOLUME  ["/data"]

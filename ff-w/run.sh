@@ -4,14 +4,6 @@ echo "root:$ROOT_PASS" | chpasswd
 sed -i "s/x-www-browser/\/opt\/firefox\/firefox/g" /etc/xdg/openbox/menu.xml
 sed -i "s/x-terminal-emulator/\/usr\/bin\/lantern/g" /etc/xdg/openbox/menu.xml
 
-cat > /root/ff <<EOF
-#!/bin/bash
-while true; do
-[ -z "`ps -ef | grep firefox| grep -v grep`" ] && export DISPLAY=0:1 && nohup /opt/firefox/firefox > /dev/null 2>&1 &
-sleep 5m
-done
-EOF
-
 echo -e 'MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)' \
         > /var/spool/cron/crontabs/root
 chmod 600 /var/spool/cron/crontabs/root

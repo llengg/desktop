@@ -5,7 +5,6 @@ ADD sources.list /etc/apt/sources.list
 ADD run.sh /run.sh
 
 RUN apt-get update && \
-    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     apt-get -y install openssh-server openbox thunar tint2 vnc4server vim axel screen curl && \
     mkdir -p /var/run/sshd;cd /root && \
     curl -O http://nchc.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_27.0.1-0ubuntu1_amd64.deb && \
@@ -16,6 +15,7 @@ RUN apt-get update && \
     chmod 755 /run.sh && \
     apt-get -y install python-software-properties && add-apt-repository ppa:ubuntu-wine/ppa && \
     apt-get update && apt-get -y install wine1.7 && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     rm -rf /var/lib/apt/lists/*
     
 

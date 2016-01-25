@@ -17,7 +17,6 @@ RUN apt-get update && \
     axel -n 50 -q http://lastmile.gomez.com/PEERInstall.exe && \
     chmod 755 /run.sh && \
     rm -rf /var/lib/apt/lists/*
-ADD ff /root/ff
 
 ENV ROOT_PASS=123456
 VOLUME  ["/data"]

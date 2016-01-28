@@ -22,10 +22,11 @@ tint2 -c /etc/xdg/tint2/tint2rc &
 thunar &
 openbox-session &
 EOF
+chmod 755 /root/xstartup
 
-echo -e 'MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)' \
-        > /var/spool/cron/crontabs/root
-chmod 600 /var/spool/cron/crontabs/root
-chown root.crontab /var/spool/cron/crontabs/root
+#echo -e 'MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)' \
+#        > /var/spool/cron/crontabs/root
+#chmod 600 /var/spool/cron/crontabs/root
+#chown root.crontab /var/spool/cron/crontabs/root
 
 exec /usr/sbin/sshd -D

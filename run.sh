@@ -22,6 +22,10 @@ sleep 5m
 done
 EOF
 
+cat > /root/lan <<EOF
+http://127.0.0.1:16823/proxy_on.pac
+EOF
+
 echo -e 'MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)' \
         > /var/spool/cron/crontabs/root
 chmod 600 /var/spool/cron/crontabs/root

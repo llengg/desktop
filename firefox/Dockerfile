@@ -2,7 +2,6 @@ FROM debian:wheezy
 MAINTAINER gaoal "keepob@163.com"
 
 ADD sources.list /etc/apt/sources.list
-ADD vncserver /etc/init.d/vncserver
 ADD run.sh /run.sh
 
 RUN apt-get update && \
@@ -12,7 +11,6 @@ RUN apt-get update && \
     curl -O https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb && \
     apt-get -y install libappindicator3-1 && \
     dpkg -i *.deb && \
-    chmod +x /etc/init.d/vncserver && \
     chmod 755 /run.sh && \
     apt-get install flashplugin-nonfree -y && \
     rm -rf /var/lib/apt/lists/* && \

@@ -21,11 +21,15 @@ while true; do
 for (( i=0; i<17280; i++ ))
 {
 sleep 5m
-[ -z "`ps -ef | grep firefox| grep -v grep`" ] && export DISPLAY=0:1 && nohup /opt/firefox/firefox > /dev/null 2>&1 &
+[ -z "`ps -ef | grep firefox| grep -v grep`" ] && export DISPLAY=0:1 && nohup /opt/firefox/firefox & > /dev/null 2>&1
 }
 kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)
 date -R >> /root/log
 done
+EOF
+
+cat > /root/revnc <<EOF
+vncserver -kill :1 && vncserver :1
 EOF
 
 cat > /root/lan <<EOF

@@ -5,7 +5,7 @@ echo "root:$ROOT_PASS" | chpasswd
 sed -i "s/x-www-browser/winecfg/g" /etc/xdg/openbox/menu.xml
 
 
-cat > /root/.vnc/xstartup <<EOF
+cat > /root/xstartup <<EOF
 #!/bin/sh
 [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
 [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources

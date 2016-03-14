@@ -7,8 +7,13 @@ sed -i "s/x-terminal-emulator/\/usr\/bin\/lantern/g" /etc/xdg/openbox/menu.xml
 cat > /root/ff <<EOF
 #!/bin/bash
 while true; do
-[ -z "`ps -ef | grep firefox| grep -v grep`" ] && export DISPLAY=0:1 && nohup /opt/firefox/firefox > /dev/null 2>&1 &
+for (( i=0; i<72; i++ ))
+{
 sleep 5m
+[ -z "`ps -ef | grep firefox| grep -v grep`" ] && export DISPLAY=0:1 && nohup /opt/firefox/firefox & > /dev/null 2>&1
+}
+kill -s 9 $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)
+date -R >> /root/log
 done
 EOF
 
@@ -22,7 +27,6 @@ tint2 -c /etc/xdg/tint2/tint2rc &
 thunar &
 openbox-session &
 EOF
-chmod 755 /root/xstartup
 
 #echo -e 'MAILTO=gaoal@dagene.net\n59 13 * * * kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)' \
 #        > /var/spool/cron/crontabs/root

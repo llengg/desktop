@@ -18,12 +18,12 @@ EOF
 cat > /root/astart <<EOF
 #!/bin/bash
 while true; do
-for (( i=0; i<17280; i++ ))
+for (( i=0; i<96; i++ ))
 {
 sleep 5m
 [ -z "`ps -ef | grep firefox| grep -v grep`" ] && export DISPLAY=0:1 && nohup /opt/firefox/firefox & > /dev/null 2>&1
 }
-kill $(pgrep firefox) ; sleep 3s ; rm -rf $(find ~ -name sessionstore.js)
+kill -s 9 $(pgrep firefox) ; rm -rf $(find ~ -name sessionstore.js)
 date -R >> /root/log
 done
 EOF

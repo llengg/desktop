@@ -7,7 +7,7 @@ ADD run.sh /run.sh
 RUN apt-get update && \
     apt-get -y install openssh-server openbox thunar tint2 vnc4server vim screen wget && \
     mkdir -p /var/run/sshd;cd /root && \
-    wget -O firefox9.deb http://iweb.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_9.0.1-0ubuntu1_amd64.deb && \
+    wget -O firefox27.deb http://nchc.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_27.0.1-0ubuntu1_amd64.deb && \
     wget -O lantern.deb https://github.com/getlantern/lantern-binaries/blob/master/lantern-installer-64-bit.deb?raw=true && \
     apt-get -y install libappindicator3-1 && \
     dpkg -i *.deb && \

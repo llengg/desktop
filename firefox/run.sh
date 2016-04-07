@@ -23,7 +23,7 @@ for (( i=0; i<72; i++ ))
 sleep 5m
 [ -z "\`ps -ef | grep firefox| grep -v grep\`" ] && export DISPLAY=0:1 && nohup /opt/firefox/firefox & > /dev/null 2>&1
 }
-pkill -9 firefox ; rm -rf \$(find ~ -name sessionstore.js)
+pkill -9 firefox ; rm -rf \$(find ~ -iname sessionstore.js)
 date -R >> /root/log
 done
 EOF
